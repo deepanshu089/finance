@@ -72,6 +72,11 @@ app.use("/api/users", userRoutes);
 app.use("/api/records", recordRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 
+// Root route redirect to Swagger docs
+app.get("/", (req, res) => {
+  res.redirect("/api-docs");
+});
+
 // Health check
 app.get("/health", (req, res) => {
   res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
