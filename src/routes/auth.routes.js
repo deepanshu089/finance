@@ -25,10 +25,13 @@ const router = express.Router();
  *             properties:
  *               name:
  *                 type: string
+ *                 example: "John Doe"
  *               email:
  *                 type: string
+ *                 example: "john@example.com"
  *               password:
  *                 type: string
+ *                 example: "password123"
  *     responses:
  *       201:
  *         description: User registered successfully
@@ -41,7 +44,7 @@ router.post("/register", validate(registerSchema), register);
  * @swagger
  * /auth/login:
  *   post:
- *     summary: Login user
+ *     summary: Login user (Use admin@finance.dev / admin123 to test full access)
  *     tags: [Auth]
  *     requestBody:
  *       required: true
@@ -55,8 +58,10 @@ router.post("/register", validate(registerSchema), register);
  *             properties:
  *               email:
  *                 type: string
+ *                 example: "admin@finance.dev"
  *               password:
  *                 type: string
+ *                 example: "admin123"
  *     responses:
  *       200:
  *         description: Login successful
