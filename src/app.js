@@ -43,8 +43,9 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: `http://localhost:${process.env.PORT || 3000}/api`,
-      },
+        url: "/api",
+        description: "Default server (relative path)"
+      }
     ],
     components: {
       securitySchemes: {
