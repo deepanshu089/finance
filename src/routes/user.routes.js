@@ -33,7 +33,8 @@ router.get("/", restrictTo("ADMIN"), async (req, res, next) => {
  * @swagger
  * /users/{id}/role:
  *   patch:
- *     summary: Update user role (Admin only)
+ *     summary: Update a user's role (Admin only)
+ *     description: Change the role of any user to ADMIN, ANALYST, or VIEWER. Immediately takes effect for that user's next request.
  *     tags: [Users]
  *     security:
  *       - bearerAuth: []
@@ -43,6 +44,7 @@ router.get("/", restrictTo("ADMIN"), async (req, res, next) => {
  *         required: true
  *         schema:
  *           type: string
+ *         description: Unique user ID (CUID)
  *     requestBody:
  *       required: true
  *       content:
@@ -55,9 +57,10 @@ router.get("/", restrictTo("ADMIN"), async (req, res, next) => {
  *               role:
  *                 type: string
  *                 enum: [VIEWER, ANALYST, ADMIN]
+ *                 example: ANALYST
  *     responses:
  *       200:
- *         description: User role updated
+ *         description: User role updated successfully
  */
 router.patch("/:id/role", restrictTo("ADMIN"), async (req, res, next) => {
   try {
